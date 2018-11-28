@@ -42,13 +42,13 @@
 #############################################################################
 
 
-from PyQt5.QtCore import (QRectF, Qt, pyqtSlot, pyqtSignal, QSize)
-from PyQt5.QtGui import (QPainter, QPixmap, QTransform, QIcon)
-from PyQt5.QtOpenGL import QGLFormat, QGLWidget, QGL
-from PyQt5.QtWidgets import (QGraphicsView, QStyle, QFrame, QToolButton, QSlider, QVBoxLayout,
+from PySide.QtCore import (QRectF, Qt, Slot, QSize)
+from PySide.QtGui import (QPainter, QPixmap, QTransform, QIcon)
+from PySide.QtOpenGL import QGLFormat, QGLWidget, QGL
+from PySide.QtGui import (QGraphicsView, QStyle, QFrame, QToolButton, QSlider, QVBoxLayout,
                              QHBoxLayout, QLabel, QButtonGroup, QGridLayout, QWidget, QPushButton)
 
-import images_rc
+import images_rc4
 
 
 class GraphicsView(QGraphicsView):
@@ -207,15 +207,15 @@ class View(QFrame):
     def view(self):
         return self.graphicsView
 
-    @pyqtSlot()
+    @Slot()
     def zoomIn(self):
         self.zoomSlider.setValue(self.zoomSlider.value() + 1)
 
-    @pyqtSlot()
+    @Slot()
     def zoomOut(self):
         self.zoomSlider.setValue(self.zoomSlider.value() - 1)
 
-    @pyqtSlot()
+    @Slot()
     def resetView(self):
         self.zoomSlider.setValue(250)
         self.rotateSlider.setValue(0)
@@ -224,11 +224,11 @@ class View(QFrame):
 
         self.resetButton.setEnabled(False)
 
-    @pyqtSlot()
+    @Slot()
     def setResetButtonEnabled(self):
         self.resetButton.setEnabled(True)
 
-    @pyqtSlot()
+    @Slot()
     def setupTransform(self):
         scale = pow(2.0, (self.zoomSlider.value() - 250) / 50.0)
         trans = QTransform()
@@ -238,25 +238,25 @@ class View(QFrame):
         self.graphicsView.setTransform(trans)
         self.setResetButtonEnabled()
 
-    @pyqtSlot()
+    @Slot()
     def togglePointerMode(self):
         self.graphicsView.setDragMode(
             QGraphicsView.RubberBandDrag if self.selectModeButton.isChecked() else QGraphicsView.ScrollHandDrag)
         self.graphicsView.setInteractive(self.selectModeButton.isChecked())
 
-    @pyqtSlot()
+    @Slot()
     def toggleOpenGL(self):
         self.graphicsView.setViewport(
             QGLWidget(QGLFormat(QGL.SampleBuffers)) if self.openGlButton.isChecked() else QWidget())
 
-    @pyqtSlot()
+    @Slot()
     def toggleAntialiasing(self):
         self.graphicsView.setRenderHint(QPainter.Antialiasing, self.antialiasButton.isChecked())
 
-    @pyqtSlot()
+    @Slot()
     def rotateLeft(self):
         self.rotateSlider.setValue(self.rotateSlider.value() - 10)
 
-    @pyqtSlot()
+    @Slot()
     def rotateRight(self):
         self.rotateSlider.setValue(self.rotateSlider.value() + 10)
