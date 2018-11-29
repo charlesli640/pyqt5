@@ -53,6 +53,12 @@ from mainwindow4 import MainWindow
 
 from Qt import __binding__
 
+# Just tell stupid pyinstaller to hook these module when building on my python2.7/pyside env
+
+if 0:
+    from PySide import QtGui
+    from PySide import QtXml
+    from PySide import QtOpenGL
 
 if __name__ == '__main__':
 
