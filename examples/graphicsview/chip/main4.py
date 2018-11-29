@@ -42,19 +42,22 @@
 #############################################################################
 
 
-from PySide.QtCore import (qAbs, QLineF, QPointF, QRect, QRectF, qrand, qsrand, Qt,
+from Qt.QtCore import (qAbs, QLineF, QPointF, QRect, QRectF, qrand, qsrand, Qt,
                           QTime, QTimer)
-from PySide.QtGui import (QBrush, QColor, QPainter, QPainterPath, QPixmap,
+from Qt.QtGui import (QBrush, QColor, QPainter, QPainterPath, QPixmap,
                          QPolygonF, QPen, QFont)
-from PySide.QtGui import (QApplication, QGraphicsItem, QGraphicsScene,
+from Qt.QtWidgets import (QApplication, QGraphicsItem, QGraphicsScene,
                              QGraphicsView, QGraphicsWidget, QStyle)
 
 from mainwindow4 import MainWindow
+
+from Qt import __binding__
 
 
 if __name__ == '__main__':
 
     import sys
+    print("Current Qt binding: {}".format(__binding__))
     app = QApplication(sys.argv)
     w = MainWindow(None)
     w.show()

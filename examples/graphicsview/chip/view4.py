@@ -42,13 +42,22 @@
 #############################################################################
 
 
-from PySide.QtCore import (QRectF, Qt, Slot, QSize)
-from PySide.QtGui import (QPainter, QPixmap, QTransform, QIcon)
-from PySide.QtOpenGL import QGLFormat, QGLWidget, QGL
-from PySide.QtGui import (QGraphicsView, QStyle, QFrame, QToolButton, QSlider, QVBoxLayout,
+from Qt.QtCore import (QRectF, Qt, Slot, QSize)
+from Qt.QtGui import (QPainter, QPixmap, QTransform, QIcon)
+from Qt.QtOpenGL import QGLFormat, QGLWidget, QGL
+from Qt.QtWidgets import (QGraphicsView, QStyle, QFrame, QToolButton, QSlider, QVBoxLayout,
                              QHBoxLayout, QLabel, QButtonGroup, QGridLayout, QWidget, QPushButton)
+from Qt import __binding__
 
-import images_rc4
+if __binding__ == "PySide2":
+    import images_rc_pyside2
+elif __binding__ == "PySide":
+    import images_rc_pyside
+elif __binding__ == "PyQt":
+    import images_rc_pyqt
+elif __binding__ == "PyQt5":
+    import images_rc_pyqt5
+
 
 
 class GraphicsView(QGraphicsView):

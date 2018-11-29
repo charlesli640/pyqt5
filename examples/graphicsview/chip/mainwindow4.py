@@ -42,15 +42,14 @@
 #############################################################################
 
 
-from PySide.QtCore import (QRectF, Qt, QSize, QPointF)
-from PySide.QtGui import (QPainter, QPixmap, QTransform, QImage, QColor)
-from PySide.QtOpenGL import QGLFormat, QGLWidget, QGL
-from PySide.QtGui import (QGraphicsView, QStyle, QFrame, QToolButton, QSlider, QVBoxLayout,
+from Qt.QtCore import (QRectF, Qt, QSize, QPointF)
+from Qt.QtGui import (QPainter, QPixmap, QTransform, QImage, QColor)
+from Qt.QtOpenGL import QGLFormat, QGLWidget, QGL
+from Qt.QtWidgets import (QGraphicsView, QStyle, QFrame, QToolButton, QSlider, QVBoxLayout,
                              QHBoxLayout, QLabel, QButtonGroup, QGridLayout, QWidget, QSplitter, QGraphicsScene)
 
 from view4 import View
 from chip4 import Chip
-import images_rc4
 
 
 class MainWindow(QWidget):

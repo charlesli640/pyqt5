@@ -44,12 +44,23 @@
 
 import math
 
-from PySide.QtCore import (qAbs, QLineF, QPointF, QRect, QRectF, qrand, qsrand, Qt,
+from Qt.QtCore import (qAbs, QLineF, QPointF, QRect, QRectF, qrand, qsrand, Qt,
                           QTime, QTimer)
-from PySide.QtGui import (QBrush, QColor, QPainter, QPainterPath, QPixmap, QStyle,
-                         QPolygonF, QPen, QFont, QGraphicsScene, QGraphicsView, QGraphicsItem, QApplication)
+from Qt.QtGui import (QBrush, QColor, QPainter, QPainterPath, QPixmap,
+                         QPolygonF, QPen, QFont)
+from Qt.QtWidgets import (QApplication, QGraphicsItem, QGraphicsScene,
+                             QGraphicsView, QGraphicsWidget, QStyle)
 
-import images_rc4
+from Qt import __binding__
+
+if __binding__ == "PySide2":
+    import images_rc_pyside2
+elif __binding__ == "PySide":
+    import images_rc_pyside
+elif __binding__ == "PyQt":
+    import images_rc_pyqt
+elif __binding__ == "PyQt5":
+    import images_rc_pyqt5
 
 
 class Chip(QGraphicsItem):
